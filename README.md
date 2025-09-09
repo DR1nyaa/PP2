@@ -23,8 +23,6 @@ Backend-приложение для автоматизации закупок в
 
 ## 🛠️ Установка и запуск
 
-### Способ 1: Локальная установка
-
 1. **Клонирование и настройка**
 ```bash
 git clone <repository-url>
@@ -33,4 +31,5 @@ python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 pip install -r requirements.txt
+
 cp .env.example .env
