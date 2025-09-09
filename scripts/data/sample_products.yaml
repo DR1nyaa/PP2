@@ -1,0 +1,20 @@
+products:
+- attributes:
+    SSD: 512GB
+    Оперативная память: 16GB
+    Процессор: Intel Core i7
+  category: Ноутбуки
+  description: 13-дюймовый бизнес-ноутбук
+  name: Ноутбук Dell XPS 13
+  sku: DLXPS13-001
+  suppliers:
+  - address: Москва, ул. Техническая, 1
+    company_name: TechSupplier Inc.
+    contact_person: Иван Петров
+    email: tech@example.com
+    lead_time_days: 2
+    min_order_quantity: 1
+    phone_number: '+79991234567'
+    price: 89999.99
+    stock_quantity: 15
+  weight: 1.2

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Накладная заказа #{{ order.order_number }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .header { background: #f4f4f4; padding: 20px; text-align: center; }
+        .order-info { margin: 20px 0; }
+        .order-items { width: 100%; border-collapse: collapse; }
+        .order-items th, .order-items td { border: 1px solid #ddd; padding: 8px; }
+        .order-items th { background: #f4f4f4; }
+        .total { font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Накладная заказа #{{ order.order_number }}</h1>
+    </div>
+
+    <div class="order-info">
+        <h2>Информация о заказе</h2>
+        <p><strong>Номер заказа:</strong> {{ order.order_number }}</p>
+        <p><strong>Дата:</strong> {{ order.created_at|date:"d.m.Y H:i" }}</p>
+        <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
+        <p><strong>Общая сумма:</strong> {{ order.total_amount }} руб.</p>
+    </div>
+
+    <div class="shipping-info">
+        <h2>Адрес доставки</h2>
+        <p>{{ shipping_address.street_address }}</p>
+        <p>{{ shipping_address.city }}, {{ shipping_address.postal_code }}</p>
+        <p>{{ shipping_address.country }}</p>
+    </div>
+
+    <div class="items-info">
+        <h2>Товары</h2>
+        <table class="order-items">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Поставщик</th>
+                    <th>Количество</th>
+                    <th>Цена за единицу</th>
+                    <th>Общая стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.supplier_product.product.name }}</td>
+                    <td>{{ item.supplier_product.supplier.company_name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.unit_price }} руб.</td>
+                    <td>{{ item.total_price }} руб.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p class="total">Итого: {{ order.total_amount }} руб.</p>
+    </div>
+</body>
+</html>
